@@ -1,0 +1,252 @@
+{
+  "sessions": {
+    "demo-session": {
+      "sessionId": "demo-session",
+      "entries": [
+        {
+          "id": "e31e3731-a9fa-4d5d-9ca6-61fdd8ec8863",
+          "topic": "Photosynthesis",
+          "summary": "A structured overview of Photosynthesis with review questions for active recall.",
+          "timestamp": 1775248339484,
+          "type": "study_guide",
+          "reflection": "Score 100/100. The guide for Photosynthesis covered overview, concepts, subtopics, and practice prompts. It started from a blank memory state. Improve next time by linking at least one concept to a previously studied topic even more explicitly.",
+          "nextTopicSuggestion": "An intermediate concept that connects naturally after Photosynthesis",
+          "source": "fallback"
+        }
+      ]
+    },
+    "5493006e-10d4-4ea1-b43e-1f751e4865ea": {
+      "sessionId": "5493006e-10d4-4ea1-b43e-1f751e4865ea",
+      "entries": [
+        {
+          "id": "ecd3e4cd-f891-4ded-86db-29a5dd9a2e9f",
+          "topic": "genai",
+          "summary": "A structured overview of genai with review questions for active recall.",
+          "timestamp": 1775249827236,
+          "type": "study_guide",
+          "reflection": "Score 100/100. The guide for genai covered overview, concepts, subtopics, practice prompts, and linked study resources. It also had 11 memory entries available for personalization. Improve next time by linking at least one concept to a previously studied topic even more explicitly.",
+          "nextTopicSuggestion": "An intermediate concept that connects naturally after genai",
+          "resourcesUsed": [
+            {
+              "title": "Generative AI",
+              "url": "https://en.wikipedia.org/wiki/Generative%20AI",
+              "source": "Wikipedia"
+            },
+            {
+              "title": "Genain quadruplets",
+              "url": "https://en.wikipedia.org/wiki/Genain%20quadruplets",
+              "source": "Wikipedia"
+            },
+            {
+              "title": "Genaille–Lucas rulers",
+              "url": "https://en.wikipedia.org/wiki/Genaille%E2%80%93Lucas%20rulers",
+              "source": "Wikipedia"
+            },
+            {
+              "title": "GenAI at the Edge: Comprehensive Survey on Empowering Edge Devices",
+              "url": "http://arxiv.org/abs/2502.15816v1",
+              "source": "arXiv"
+            },
+            {
+              "title": "GenAI Content Detection Task 1: English and Multilingual Machine-Generated Text Detection: AI vs. Human",
+              "url": "http://arxiv.org/abs/2501.11012v2",
+              "source": "arXiv"
+            }
+          ],
+          "source": "fallback"
+        },
+        {
+          "id": "5263d19e-a433-463c-ac11-61acdc6d4320",
+          "topic": "cureent iran usa israel war",
+          "summary": "A structured overview of cureent iran usa israel war with review questions for active recall.",
+          "timestamp": 1775249802553,
+          "type": "study_guide",
+          "reflection": "Score 100/100. The guide for cureent iran usa israel war covered overview, concepts, subtopics, practice prompts, and linked study resources. It also had 10 memory entries available for personalization. Improve next time by linking at least one concept to a previously studied topic even more explicitly.",
+          "nextTopicSuggestion": "An intermediate concept that connects naturally after cureent iran usa israel war",
+          "resourcesUsed": [
+            {
+              "title": "A Recommendation for Net Undercount Estimation in Iran Population and Dwelling Censuses",
+              "url": "http://arxiv.org/abs/1910.05620v1",
+              "source": "arXiv"
+            },
+            {
+              "title": "NuSTAR Discovery of a cyclotron line in KS 1947+300",
+              "url": "http://arxiv.org/abs/1403.1901v1",
+              "source": "arXiv"
+            }
+          ],
+          "source": "fallback"
+        },
+        {
+          "id": "8849fafe-e4db-433c-999a-7e77dbb08d26",
+          "topic": "www 3",
+          "summary": "A structured overview of www 3 with review questions for active recall.",
+          "timestamp": 1775249782644,
+          "type": "study_guide",
+          "reflection": "Score 100/100. The guide for www 3 covered overview, concepts, subtopics, practice prompts, and linked study resources. It also had 9 memory entries available for personalization. Improve next time by linking at least one concept to a previously studied topic even more explicitly.",
+          "nextTopicSuggestion": "An intermediate concept that connects naturally after www 3",
+          "resourcesUsed": [
+            {
+              "title": "Subdomain",
+              "url": "https://en.wikipedia.org/wiki/Subdomain",
+              "source": "Wikipedia"
+            },
+            {
+              "title": "WWW (film)",
+              "url": "https://en.wikipedia.org/wiki/WWW%20(film)",
+              "source": "Wikipedia"
+            },
+            {
+              "title": "WWW Trilogy",
+              "url": "https://en.wikipedia.org/wiki/WWW%20Trilogy",
+              "source": "Wikipedia"
+            },
+            {
+              "title": "Two-dimensional magnetic interactions in LaFeAsO",
+              "url": "http://arxiv.org/abs/1303.4033v1",
+              "source": "arXiv"
+            },
+            {
+              "title": "Corrected Evaluation Results of the NTCIR WWW-2, WWW-3, and WWW-4 English Subtasks",
+              "url": "http://arxiv.org/abs/2210.10266v1",
+              "source": "arXiv"
+            }
+          ],
+          "source": "fallback"
+        },
+        {
+          "id": "bc37b5e3-4452-4e4a-b128-0addea68450d",
+          "topic": "nlp",
+          "summary": "A structured overview of nlp with review questions for active recall.",
+          "timestamp": 1775249721162,
+          "type": "study_guide",
+          "reflection": "Score 100/100. The guide for nlp covered overview, concepts, subtopics, practice prompts, and linked study resources. It also had 8 memory entries available for personalization. Improve next time by linking at least one concept to a previously studied topic even more explicitly.",
+          "nextTopicSuggestion": "An intermediate concept that connects naturally after nlp",
+          "resourcesUsed": [
+            {
+              "title": "NLP",
+              "url": "https://en.wikipedia.org/wiki/NLP",
+              "source": "Wikipedia"
+            },
+            {
+              "title": "NLPC-P60 RNA motif",
+              "url": "https://en.wikipedia.org/wiki/NLPC-P60%20RNA%20motif",
+              "source": "Wikipedia"
+            },
+            {
+              "title": "Neuro-linguistic programming",
+              "url": "https://en.wikipedia.org/wiki/Neuro-linguistic%20programming",
+              "source": "Wikipedia"
+            },
+            {
+              "title": "A dissemination workshop for introducing young Italian students to NLP",
+              "url": "http://arxiv.org/abs/2104.12405v2",
+              "source": "arXiv"
+            },
+            {
+              "title": "Teaching NLP with Bracelets and Restaurant Menus: An Interactive Workshop for Italian Students",
+              "url": "http://arxiv.org/abs/2104.12422v2",
+              "source": "arXiv"
+            }
+          ],
+          "source": "fallback"
+        },
+        {
+          "id": "cd6fb424-4516-4e37-ae19-8285bdb8e6e6",
+          "topic": "nlp",
+          "summary": "A structured overview of nlp with review questions for active recall.",
+          "timestamp": 1775249646931,
+          "type": "study_guide",
+          "reflection": "Score 100/100. The guide for nlp covered overview, concepts, subtopics, and practice prompts. It also had 7 memory entries available for personalization. Improve next time by linking at least one concept to a previously studied topic even more explicitly.",
+          "nextTopicSuggestion": "An intermediate concept that connects naturally after nlp",
+          "source": "fallback"
+        },
+        {
+          "id": "15bb7418-61bb-4941-aa44-7a4a77a58f9f",
+          "topic": "nlp",
+          "summary": "A structured overview of nlp with review questions for active recall.",
+          "timestamp": 1775249639800,
+          "type": "study_guide",
+          "reflection": "Score 100/100. The guide for nlp covered overview, concepts, subtopics, and practice prompts. It also had 6 memory entries available for personalization. Improve next time by linking at least one concept to a previously studied topic even more explicitly.",
+          "nextTopicSuggestion": "An intermediate concept that connects naturally after nlp",
+          "source": "fallback"
+        },
+        {
+          "id": "c233d2c4-60c5-4c30-ab39-c601a48b9700",
+          "topic": "nlp",
+          "summary": "A structured overview of nlp with review questions for active recall.",
+          "timestamp": 1775249194703,
+          "type": "study_guide",
+          "reflection": "Score 100/100. The guide for nlp covered overview, concepts, subtopics, and practice prompts. It also had 5 memory entries available for personalization. Improve next time by linking at least one concept to a previously studied topic even more explicitly.",
+          "nextTopicSuggestion": "An intermediate concept that connects naturally after nlp",
+          "source": "fallback"
+        },
+        {
+          "id": "d4ccf233-b3fe-4a66-8560-6d4f2e308146",
+          "topic": "nlp",
+          "summary": "A beginner-friendly explanation of nlp with an analogy and recall cue.",
+          "timestamp": 1775248989895,
+          "type": "clarify",
+          "reflection": "Score 100/100. The clarification simplified nlp, used an analogy, and added a memory hook. It also had 4 memory entries available for personalization. Improve next time by making the analogy even more concrete.",
+          "nextTopicSuggestion": "A slightly deeper follow-up concept related to nlp",
+          "source": "fallback"
+        },
+        {
+          "id": "6a026267-f234-4a2b-921b-30a05881df4f",
+          "topic": "nlp",
+          "summary": "A structured overview of nlp with review questions for active recall.",
+          "timestamp": 1775248975062,
+          "type": "study_guide",
+          "reflection": "Score 100/100. The guide for nlp covered overview, concepts, subtopics, and practice prompts. It also had 3 memory entries available for personalization. Improve next time by linking at least one concept to a previously studied topic even more explicitly.",
+          "nextTopicSuggestion": "An intermediate concept that connects naturally after nlp",
+          "source": "fallback"
+        },
+        {
+          "id": "179144af-eab7-434a-b994-a3b66f80b63d",
+          "topic": "neural networks",
+          "summary": "A structured overview of neural networks with review questions for active recall.",
+          "timestamp": 1775248862310,
+          "type": "study_guide",
+          "reflection": "Score 100/100. The guide for neural networks covered overview, concepts, subtopics, and practice prompts. It also had 2 memory entries available for personalization. Improve next time by linking at least one concept to a previously studied topic even more explicitly.",
+          "nextTopicSuggestion": "An intermediate concept that connects naturally after neural networks",
+          "source": "fallback"
+        },
+        {
+          "id": "0f0477f5-2ff9-407c-9e8b-1b2de1905565",
+          "topic": "neural networks",
+          "summary": "A conversational audio-style recap of neural networks.",
+          "timestamp": 1775248839050,
+          "type": "podcast",
+          "reflection": "Score 100/100. The podcast turned neural networks into a multi-voice teaching script. It also had 1 memory entries available for personalization. Improve next time by adding a stronger end recap for revision.",
+          "nextTopicSuggestion": "A next-step topic that naturally extends neural networks",
+          "source": "fallback"
+        },
+        {
+          "id": "d29d337b-c1f3-450d-95dc-807754922c23",
+          "topic": "neural networks",
+          "summary": "A structured overview of neural networks with review questions for active recall.",
+          "timestamp": 1775248799617,
+          "type": "study_guide",
+          "reflection": "Score 100/100. The guide for neural networks covered overview, concepts, subtopics, and practice prompts. It started from a blank memory state. Improve next time by linking at least one concept to a previously studied topic even more explicitly.",
+          "nextTopicSuggestion": "An intermediate concept that connects naturally after neural networks",
+          "source": "fallback"
+        }
+      ]
+    },
+    "resource-demo": {
+      "sessionId": "resource-demo",
+      "entries": [
+        {
+          "id": "99ef9a81-ed59-4af7-bf09-b7dbf8c4907c",
+          "topic": "Neural networks",
+          "summary": "A structured overview of Neural networks with review questions for active recall.",
+          "timestamp": 1775249595609,
+          "type": "study_guide",
+          "reflection": "Score 100/100. The guide for Neural networks covered overview, concepts, subtopics, and practice prompts. It started from a blank memory state. Improve next time by linking at least one concept to a previously studied topic even more explicitly.",
+          "nextTopicSuggestion": "An intermediate concept that connects naturally after Neural networks",
+          "source": "fallback"
+        }
+      ]
+    }
+  }
+}
