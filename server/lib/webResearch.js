@@ -2,26 +2,17 @@ function compact(text) {
   return String(text || "").replace(/\s+/g, " ").trim();
 }
 
-function truncate(text, max = 220) {
+function truncate(text, max = 250) {
   const clean = compact(text);
   return clean.length > max ? `${clean.slice(0, max - 1)}…` : clean;
 }
 
-function normalizeWikipediaResult(item) {
-  return {
-    title: item.title,
-    url: item.content_urls?.desktop?.page || `https://en.wikipedia.org/wiki/${encodeURIComponent(item.title)}`,
-    source: "Wikipedia",
-    type: "encyclopedia",
-    snippet: truncate(item.description || item.extract || `Overview article about ${item.title}.`),
-    reason: "Good starting point for high-level understanding."
-  };
-}
+// ─── arXiv ────────────────────────────────────────────────────────────────────
 
 function parseArxivEntries(xml) {
   const entries = [...xml.matchAll(/<entry>([\s\S]*?)<\/entry>/g)];
 
-  return entries.slice(0, 2).map((match) => {
+  return entries.slice(0, 3).map((match) => {
     const block = match[1];
     const title = compact(block.match(/<title>([\s\S]*?)<\/title>/)?.[1] || "arXiv paper");
     const summary = truncate(block.match(/<summary>([\s\S]*?)<\/summary>/)?.[1] || "");
@@ -31,117 +22,143 @@ function parseArxivEntries(xml) {
       title,
       url: link,
       source: "arXiv",
-      type: "paper",
+      type: "article",
       snippet: summary || `Research-oriented reading related to ${title}.`,
-      reason: "Useful if you want a deeper technical source after the basics."
+      reason: "Academic pre-print with in-depth technical coverage of this topic."
     };
   });
 }
 
-async function fetchWikipediaResources(topic) {
-  const url = `https://en.wikipedia.org/w/rest.php/v1/search/title?q=${encodeURIComponent(topic)}&limit=3`;
-  const response = await fetch(url, {
-    headers: {
-      "user-agent": "agentic-study-assistant/1.0"
-    }
-  });
-
-  if (!response.ok) {
-    throw new Error(`Wikipedia search failed with status ${response.status}`);
-  }
-
-  const payload = await response.json();
-  return Array.isArray(payload.pages) ? payload.pages.map(normalizeWikipediaResult) : [];
-}
-
 async function fetchArxivResources(topic) {
-  const url = `https://export.arxiv.org/api/query?search_query=all:${encodeURIComponent(topic)}&start=0&max_results=2&sortBy=relevance&sortOrder=descending`;
-  const response = await fetch(url, {
-    headers: {
-      "user-agent": "agentic-study-assistant/1.0"
-    }
-  });
+  const url = `https://export.arxiv.org/api/query?search_query=all:${encodeURIComponent(topic)}&start=0&max_results=3&sortBy=relevance&sortOrder=descending`;
+  const response = await fetch(url, { headers: { "user-agent": "agentic-study-assistant/1.0" } });
 
-  if (!response.ok) {
-    throw new Error(`arXiv search failed with status ${response.status}`);
-  }
+  if (!response.ok) throw new Error(`arXiv search failed: ${response.status}`);
 
   const xml = await response.text();
   return parseArxivEntries(xml);
 }
 
-function buildFallbackResources(topic) {
+// ─── YouTube (no API key needed – RSS feed) ───────────────────────────────────
+
+function parseYouTubeRSS(xml) {
+  const entries = [...xml.matchAll(/<entry>([\s\S]*?)<\/entry>/g)];
+
+  return entries.slice(0, 4).map((match) => {
+    const block = match[1];
+    const title = compact(block.match(/<title>([\s\S]*?)<\/title>/)?.[1] || "YouTube video");
+    const videoId = block.match(/<yt:videoId>([\s\S]*?)<\/yt:videoId>/)?.[1]?.trim() || "";
+    const author = compact(block.match(/<name>([\s\S]*?)<\/name>/)?.[1] || "YouTube");
+    const description = truncate(
+      block.match(/<media:description>([\s\S]*?)<\/media:description>/)?.[1] || ""
+    );
+
+    return {
+      title,
+      url: videoId ? `https://www.youtube.com/watch?v=${videoId}` : "",
+      source: author,
+      type: "video",
+      snippet: description || `Video explanation of ${title}.`,
+      reason: "Visual walkthrough that helps clarify this concept step-by-step."
+    };
+  }).filter((v) => v.url);
+}
+
+async function fetchYouTubeVideos(topic) {
+  // YouTube RSS search feed – no API key required
+  const url = `https://www.youtube.com/feeds/videos.xml?search_query=${encodeURIComponent(`${topic} explained tutorial`)}`;
+  const response = await fetch(url, { headers: { "user-agent": "agentic-study-assistant/1.0" } });
+
+  if (!response.ok) throw new Error(`YouTube RSS failed: ${response.status}`);
+
+  const xml = await response.text();
+  return parseYouTubeRSS(xml);
+}
+
+// ─── Fallbacks ────────────────────────────────────────────────────────────────
+
+function buildFallbackArticles(topic) {
   return [
-    {
-      title: `${topic} on Wikipedia`,
-      url: `https://en.wikipedia.org/wiki/Special:Search?search=${encodeURIComponent(topic)}`,
-      source: "Wikipedia",
-      type: "encyclopedia",
-      snippet: `Search Wikipedia for a broad overview of ${topic}.`,
-      reason: "Strong starting point when live web lookup is unavailable."
-    },
     {
       title: `${topic} on arXiv`,
       url: `https://arxiv.org/search/?query=${encodeURIComponent(topic)}&searchtype=all`,
       source: "arXiv",
-      type: "paper",
+      type: "article",
       snippet: `Browse research papers and technical discussions related to ${topic}.`,
-      reason: "Good for deeper academic follow-up."
+      reason: "Good for deeper academic follow-up when live fetch is unavailable."
     },
     {
-      title: `${topic} study search`,
-      url: `https://www.google.com/search?q=${encodeURIComponent(`${topic} study guide`)}`,
-      source: "Web search",
-      type: "search",
-      snippet: `Search broadly for tutorials, explainers, and examples about ${topic}.`,
-      reason: "Useful backup path for finding videos, notes, and practice resources."
+      title: `${topic} – Google Scholar`,
+      url: `https://scholar.google.com/scholar?q=${encodeURIComponent(topic)}`,
+      source: "Google Scholar",
+      type: "article",
+      snippet: `Search peer-reviewed publications and academic citations for ${topic}.`,
+      reason: "Surfaces high-quality academic sources for this topic."
     }
   ];
 }
 
-function dedupeResources(resources) {
-  const seen = new Set();
-
-  return resources.filter((resource) => {
-    const key = resource.url;
-    if (seen.has(key)) {
-      return false;
+function buildFallbackVideos(topic) {
+  return [
+    {
+      title: `${topic} – YouTube educational search`,
+      url: `https://www.youtube.com/results?search_query=${encodeURIComponent(`${topic} explained`)}`,
+      source: "YouTube",
+      type: "video",
+      snippet: `Search for visual explainers and tutorials about ${topic}.`,
+      reason: "Great starting point for visual learners."
     }
-
-    seen.add(key);
-    return true;
-  });
+  ];
 }
 
-export function buildResearchContext(resources) {
-  if (!resources.length) {
-    return "No external study resources were fetched.";
-  }
+// ─── Context builder (injected into LLM prompt) ───────────────────────────────
 
+export function buildArticleContext(articles) {
+  if (!articles.length) return "No article resources were fetched.";
+  return articles
+    .map((r, i) => `${i + 1}. [${r.source}] "${r.title}" — ${r.snippet}\n   URL: ${r.url}`)
+    .join("\n\n");
+}
+
+export function buildVideoContext(videos) {
+  if (!videos.length) return "No video resources were fetched.";
+  return videos
+    .map((r, i) => `${i + 1}. [${r.source}] "${r.title}" — ${r.snippet}\n   URL: ${r.url}`)
+    .join("\n\n");
+}
+
+/** Legacy helper used elsewhere in agent.js */
+export function buildResearchContext(resources) {
+  if (!resources || !resources.length) return "No external study resources were fetched.";
   return resources
-    .map(
-      (resource, index) =>
-        `${index + 1}. ${resource.title} (${resource.source}) - ${resource.snippet} URL: ${resource.url}`
-    )
+    .map((r, i) => `${i + 1}. ${r.title} (${r.source}) — ${r.snippet} URL: ${r.url}`)
     .join("\n");
 }
 
+// ─── Main export ──────────────────────────────────────────────────────────────
+
 export async function fetchStudyResources(topic) {
-  const settled = await Promise.allSettled([
-    fetchWikipediaResources(topic),
-    fetchArxivResources(topic)
+  const [articlesResult, videosResult] = await Promise.allSettled([
+    fetchArxivResources(topic),
+    fetchYouTubeVideos(topic)
   ]);
 
-  const liveResources = settled
-    .filter((result) => result.status === "fulfilled")
-    .flatMap((result) => result.value);
+  const articles =
+    articlesResult.status === "fulfilled" && articlesResult.value.length
+      ? articlesResult.value
+      : buildFallbackArticles(topic);
 
-  const resources = dedupeResources(
-    liveResources.length ? liveResources : buildFallbackResources(topic)
-  ).slice(0, 5);
+  const videos =
+    videosResult.status === "fulfilled" && videosResult.value.length
+      ? videosResult.value
+      : buildFallbackVideos(topic);
+
+  const resources = [...articles, ...videos];
 
   return {
     resources,
-    source: liveResources.length ? "live_web" : "fallback_links"
+    articles,
+    videos,
+    source: articlesResult.status === "fulfilled" ? "live_web" : "fallback_links"
   };
 }

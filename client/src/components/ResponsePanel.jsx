@@ -1,10 +1,12 @@
 import CollapsibleSection from "./CollapsibleSection";
+import ReactMarkdown from "react-markdown";
 
 function BulletList({ items }) {
+  if (!items || !items.length) return null;
   return (
     <ul className="space-y-2 text-sm text-ink/80">
-      {items.map((item) => (
-        <li key={item} className="rounded-2xl bg-mist/70 px-4 py-3">
+      {items.map((item, idx) => (
+        <li key={idx} className="rounded-2xl bg-mist/70 px-4 py-3">
           {item}
         </li>
       ))}
@@ -103,37 +105,83 @@ export default function ResponsePanel({ response }) {
 
       {action === "study_guide" ? (
         <div className="space-y-4">
-          <CollapsibleSection title="Overview">
-            <p className="text-sm leading-7 text-ink/80">{content.overview}</p>
+          <div className="rounded-[2rem] bg-white/80 p-6 shadow-glow">
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.22em] text-pine">Masterclass Lesson</p>
+            <div className="prose prose-sm max-w-none text-ink/80 prose-headings:text-ink prose-strong:text-ink prose-bullet:text-pine">
+              <ReactMarkdown>{content.lesson}</ReactMarkdown>
+            </div>
+          </div>
+
+          <CollapsibleSection title="Engaging Activities">
+            <BulletList items={content.activities} />
           </CollapsibleSection>
-          <CollapsibleSection title="Key Concepts">
-            <BulletList items={content.keyConcepts} />
-          </CollapsibleSection>
-          <CollapsibleSection title="Subtopics">
-            <BulletList items={content.subtopics} />
-          </CollapsibleSection>
-          <CollapsibleSection title="Practice Questions">
-            <BulletList items={content.practiceQuestions} />
-          </CollapsibleSection>
-          <CollapsibleSection title="Study Resources">
-            <ResourceList items={content.webResources || []} />
-          </CollapsibleSection>
+
+          {content.articles && content.articles.length > 0 && (
+            <CollapsibleSection title="📚 Deep Dive Reading">
+              <div className="space-y-3">
+                {content.articles.map((item) => (
+                  <a
+                    key={item.url}
+                    href={item.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="block rounded-2xl border border-ink/10 bg-white px-4 py-4 transition hover:border-pine/40 hover:bg-mist/50"
+                  >
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="text-sm font-semibold text-ink">{item.title}</span>
+                      <span className="rounded-full bg-sand px-2 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/70">
+                        {item.source}
+                      </span>
+                    </div>
+                    <p className="mt-2 text-sm leading-6 text-ink/72">{item.snippet}</p>
+                    <p className="mt-2 text-xs font-medium text-pine">{item.reason}</p>
+                  </a>
+                ))}
+              </div>
+            </CollapsibleSection>
+          )}
+
+          {content.videos && content.videos.length > 0 && (
+            <CollapsibleSection title="🎥 Watch & Learn">
+              <div className="space-y-3">
+                {content.videos.map((item) => (
+                  <a
+                    key={item.url}
+                    href={item.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-start gap-4 rounded-2xl border border-ink/10 bg-white px-4 py-4 transition hover:border-ember/40 hover:bg-sand/30"
+                  >
+                    <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-ember/10 text-lg">
+                      ▶
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-ink">{item.title}</p>
+                      <p className="mt-1 text-xs text-ink/55">{item.source}</p>
+                      <p className="mt-2 text-sm leading-6 text-ink/72">{item.snippet}</p>
+                      <p className="mt-2 text-xs font-medium text-ember">{item.reason}</p>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </CollapsibleSection>
+          )}
         </div>
       ) : null}
 
       {action === "clarify" ? (
         <div className="grid gap-4 lg:grid-cols-3">
           <div className="rounded-[2rem] bg-white/80 p-5 shadow-glow">
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-ember">Simple Explanation</p>
-            <p className="mt-4 text-sm leading-7 text-ink/80">{content.simpleExplanation}</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-ember">Technical Definition</p>
+            <p className="mt-4 text-sm leading-7 text-ink/80">{content.technicalDefinition}</p>
           </div>
           <div className="rounded-[2rem] bg-white/80 p-5 shadow-glow">
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-pine">Real-World Analogy</p>
-            <p className="mt-4 text-sm leading-7 text-ink/80">{content.analogy}</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-pine">Core Components</p>
+            <p className="mt-4 text-sm leading-7 text-ink/80">{content.coreComponents}</p>
           </div>
           <div className="rounded-[2rem] bg-white/80 p-5 shadow-glow">
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-ink/50">Memory Hook</p>
-            <p className="mt-4 text-sm leading-7 text-ink/80">{content.memoryHook}</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-ink/50">Advanced Implications</p>
+            <p className="mt-4 text-sm leading-7 text-ink/80">{content.advancedImplications}</p>
           </div>
         </div>
       ) : null}
@@ -160,6 +208,20 @@ export default function ResponsePanel({ response }) {
               </div>
             ))}
           </div>
+        </div>
+      ) : null}
+
+      {action === "teach" ? (
+        <div className="space-y-4">
+          <div className="rounded-[2rem] bg-white/80 p-6 shadow-glow">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-pine">Tutor Explanation</p>
+            <p className="mt-4 text-sm leading-7 text-ink/80">{content.explanation}</p>
+          </div>
+          {content.bulletPoints && content.bulletPoints.length > 0 && (
+            <CollapsibleSection title="Key Takeaways">
+              <BulletList items={content.bulletPoints} />
+            </CollapsibleSection>
+          )}
         </div>
       ) : null}
     </div>

@@ -1,5 +1,42 @@
 {
   "sessions": {
+    "123": {
+      "sessionId": "123",
+      "entries": [
+        {
+          "id": "9f1ccab1-a46f-4c44-be79-f7c51ab2e1e1",
+          "topic": "transformer",
+          "summary": "A narrative explanation of transformer mapping an everyday analogy to core facts.",
+          "timestamp": 1777656711354,
+          "type": "study_guide",
+          "reflection": "Score 100/100. The masterclass for transformer used an analogy-first approach, mapped to RAG data, and provided engaging activities. It started from a blank memory state. Improve next time by ensuring the analogy maps perfectly to the specific textbook definitions.",
+          "nextTopicSuggestion": "An intermediate concept that connects naturally after transformer",
+          "resourcesUsed": [
+            {
+              "title": "PyramidTNT: Improved Transformer-in-Transformer Baselines with Pyramid Architecture",
+              "url": "http://arxiv.org/abs/2201.00978v1",
+              "source": "arXiv"
+            },
+            {
+              "title": "Learning to Cluster Faces via Transformer",
+              "url": "http://arxiv.org/abs/2104.11502v1",
+              "source": "arXiv"
+            },
+            {
+              "title": "MLP Can Be A Good Transformer Learner",
+              "url": "http://arxiv.org/abs/2404.05657v1",
+              "source": "arXiv"
+            },
+            {
+              "title": "transformer – YouTube educational search",
+              "url": "https://www.youtube.com/results?search_query=transformer%20explained",
+              "source": "YouTube"
+            }
+          ],
+          "source": "fallback"
+        }
+      ]
+    },
     "demo-session": {
       "sessionId": "demo-session",
       "entries": [
@@ -18,6 +55,543 @@
     "5493006e-10d4-4ea1-b43e-1f751e4865ea": {
       "sessionId": "5493006e-10d4-4ea1-b43e-1f751e4865ea",
       "entries": [
+        {
+          "id": "d539fea4-55ac-41c8-a99a-4cb3ea165b01",
+          "topic": "encoder in llms",
+          "summary": "A narrative explanation of encoder in llms mapping an everyday analogy to core facts.",
+          "timestamp": 1777662683314,
+          "type": "study_guide",
+          "reflection": "Score 100/100. The masterclass for encoder in llms used an analogy-first approach, mapped to RAG data, and provided engaging activities. It also had 35 memory entries available for personalization. Improve next time by ensuring the analogy maps perfectly to the specific textbook definitions.",
+          "nextTopicSuggestion": "An intermediate concept that connects naturally after encoder in llms",
+          "resourcesUsed": [
+            {
+              "title": "Number Representations in LLMs: A Computational Parallel to Human Perception",
+              "url": "http://arxiv.org/abs/2502.16147v1",
+              "source": "arXiv"
+            },
+            {
+              "title": "Current state of LLM Risks and AI Guardrails",
+              "url": "http://arxiv.org/abs/2406.12934v1",
+              "source": "arXiv"
+            },
+            {
+              "title": "You Need an Encoder for Native Position-Independent Caching",
+              "url": "http://arxiv.org/abs/2602.01519v1",
+              "source": "arXiv"
+            },
+            {
+              "title": "encoder in llms – YouTube educational search",
+              "url": "https://www.youtube.com/results?search_query=encoder%20in%20llms%20explained",
+              "source": "YouTube"
+            }
+          ],
+          "source": "fallback"
+        },
+        {
+          "id": "da7a758a-6cac-4fc9-8f15-4fed7a07e2e9",
+          "topic": "encoder in llms",
+          "summary": "A narrative explanation of encoder in llms mapping an everyday analogy to core facts.",
+          "timestamp": 1777657146761,
+          "type": "study_guide",
+          "reflection": "Score 100/100. The masterclass for encoder in llms used an analogy-first approach, mapped to RAG data, and provided engaging activities. It also had 34 memory entries available for personalization. Improve next time by ensuring the analogy maps perfectly to the specific textbook definitions.",
+          "nextTopicSuggestion": "An intermediate concept that connects naturally after encoder in llms",
+          "resourcesUsed": [
+            {
+              "title": "Number Representations in LLMs: A Computational Parallel to Human Perception",
+              "url": "http://arxiv.org/abs/2502.16147v1",
+              "source": "arXiv"
+            },
+            {
+              "title": "Current state of LLM Risks and AI Guardrails",
+              "url": "http://arxiv.org/abs/2406.12934v1",
+              "source": "arXiv"
+            },
+            {
+              "title": "You Need an Encoder for Native Position-Independent Caching",
+              "url": "http://arxiv.org/abs/2602.01519v1",
+              "source": "arXiv"
+            },
+            {
+              "title": "encoder in llms – YouTube educational search",
+              "url": "https://www.youtube.com/results?search_query=encoder%20in%20llms%20explained",
+              "source": "YouTube"
+            }
+          ],
+          "source": "fallback"
+        },
+        {
+          "id": "7479501b-89e6-4c77-aa5c-6ce6e5dc2142",
+          "topic": "encoder in llms",
+          "summary": "A narrative explanation of encoder in llms mapping an everyday analogy to core facts.",
+          "timestamp": 1777656354894,
+          "type": "study_guide",
+          "reflection": "Score 100/100. The masterclass for encoder in llms used an analogy-first approach, mapped to RAG data, and provided engaging activities. It also had 33 memory entries available for personalization. Improve next time by ensuring the analogy maps perfectly to the specific textbook definitions.",
+          "nextTopicSuggestion": "An intermediate concept that connects naturally after encoder in llms",
+          "resourcesUsed": [
+            {
+              "title": "Number Representations in LLMs: A Computational Parallel to Human Perception",
+              "url": "http://arxiv.org/abs/2502.16147v1",
+              "source": "arXiv"
+            },
+            {
+              "title": "Current state of LLM Risks and AI Guardrails",
+              "url": "http://arxiv.org/abs/2406.12934v1",
+              "source": "arXiv"
+            },
+            {
+              "title": "You Need an Encoder for Native Position-Independent Caching",
+              "url": "http://arxiv.org/abs/2602.01519v1",
+              "source": "arXiv"
+            },
+            {
+              "title": "encoder in llms – YouTube educational search",
+              "url": "https://www.youtube.com/results?search_query=encoder%20in%20llms%20explained",
+              "source": "YouTube"
+            }
+          ],
+          "source": "fallback"
+        },
+        {
+          "id": "1819081a-9180-42bb-89b9-2fdf6a51ee18",
+          "topic": "encoder in llms",
+          "summary": "A narrative explanation of encoder in llms mapping an everyday analogy to core facts.",
+          "timestamp": 1777654669893,
+          "type": "study_guide",
+          "reflection": "Score 100/100. The masterclass for encoder in llms used an analogy-first approach, mapped to RAG data, and provided engaging activities. It also had 32 memory entries available for personalization. Improve next time by ensuring the analogy maps perfectly to the specific textbook definitions.",
+          "nextTopicSuggestion": "An intermediate concept that connects naturally after encoder in llms",
+          "resourcesUsed": [
+            {
+              "title": "Number Representations in LLMs: A Computational Parallel to Human Perception",
+              "url": "http://arxiv.org/abs/2502.16147v1",
+              "source": "arXiv"
+            },
+            {
+              "title": "Current state of LLM Risks and AI Guardrails",
+              "url": "http://arxiv.org/abs/2406.12934v1",
+              "source": "arXiv"
+            },
+            {
+              "title": "You Need an Encoder for Native Position-Independent Caching",
+              "url": "http://arxiv.org/abs/2602.01519v1",
+              "source": "arXiv"
+            },
+            {
+              "title": "encoder in llms – YouTube educational search",
+              "url": "https://www.youtube.com/results?search_query=encoder%20in%20llms%20explained",
+              "source": "YouTube"
+            }
+          ],
+          "source": "fallback"
+        },
+        {
+          "id": "3f738f49-d58c-4d65-bba4-48b1ef71db02",
+          "topic": "encoder in llm",
+          "summary": "A narrative explanation of encoder in llm mapping an everyday analogy to core facts.",
+          "timestamp": 1777653877776,
+          "type": "study_guide",
+          "reflection": "Score 100/100. The masterclass for encoder in llm used an analogy-first approach, mapped to RAG data, and provided engaging activities. It also had 31 memory entries available for personalization. Improve next time by ensuring the analogy maps perfectly to the specific textbook definitions.",
+          "nextTopicSuggestion": "An intermediate concept that connects naturally after encoder in llm",
+          "resourcesUsed": [
+            {
+              "title": "Investigating Redundancy in Multimodal Large Language Models with Multiple Vision Encoders",
+              "url": "http://arxiv.org/abs/2507.03262v4",
+              "source": "arXiv"
+            },
+            {
+              "title": "You Need an Encoder for Native Position-Independent Caching",
+              "url": "http://arxiv.org/abs/2602.01519v1",
+              "source": "arXiv"
+            },
+            {
+              "title": "RETA-LLM: A Retrieval-Augmented Large Language Model Toolkit",
+              "url": "http://arxiv.org/abs/2306.05212v1",
+              "source": "arXiv"
+            },
+            {
+              "title": "encoder in llm – YouTube educational search",
+              "url": "https://www.youtube.com/results?search_query=encoder%20in%20llm%20explained",
+              "source": "YouTube"
+            }
+          ],
+          "source": "fallback"
+        },
+        {
+          "id": "c7186981-7c89-4504-8957-f66642199930",
+          "topic": "t",
+          "summary": "A narrative explanation of t mapping an everyday analogy to core facts.",
+          "timestamp": 1777653841845,
+          "type": "study_guide",
+          "reflection": "Score 100/100. The masterclass for t used an analogy-first approach, mapped to RAG data, and provided engaging activities. It also had 30 memory entries available for personalization. Improve next time by ensuring the analogy maps perfectly to the specific textbook definitions.",
+          "nextTopicSuggestion": "An intermediate concept that connects naturally after t",
+          "resourcesUsed": [
+            {
+              "title": "The Physics of the B Factories",
+              "url": "http://arxiv.org/abs/1406.6311v4",
+              "source": "arXiv"
+            },
+            {
+              "title": "Expected Performance of the ATLAS Experiment - Detector, Trigger and Physics",
+              "url": "http://arxiv.org/abs/0901.0512v4",
+              "source": "arXiv"
+            },
+            {
+              "title": "Observation of the rare $B^0_s\\toμ^+μ^-$ decay from the combined analysis of CMS and LHCb data",
+              "url": "http://arxiv.org/abs/1411.4413v2",
+              "source": "arXiv"
+            },
+            {
+              "title": "t – YouTube educational search",
+              "url": "https://www.youtube.com/results?search_query=t%20explained",
+              "source": "YouTube"
+            }
+          ],
+          "source": "fallback"
+        },
+        {
+          "id": "2341a088-cff7-4b3e-9747-5b17f3f75ea0",
+          "topic": "transformer",
+          "summary": "A narrative explanation of transformer mapping an everyday analogy to core facts.",
+          "timestamp": 1777653830189,
+          "type": "study_guide",
+          "reflection": "Score 100/100. The masterclass for transformer used an analogy-first approach, mapped to RAG data, and provided engaging activities. It also had 29 memory entries available for personalization. Improve next time by ensuring the analogy maps perfectly to the specific textbook definitions.",
+          "nextTopicSuggestion": "An intermediate concept that connects naturally after transformer",
+          "resourcesUsed": [
+            {
+              "title": "PyramidTNT: Improved Transformer-in-Transformer Baselines with Pyramid Architecture",
+              "url": "http://arxiv.org/abs/2201.00978v1",
+              "source": "arXiv"
+            },
+            {
+              "title": "Learning to Cluster Faces via Transformer",
+              "url": "http://arxiv.org/abs/2104.11502v1",
+              "source": "arXiv"
+            },
+            {
+              "title": "MLP Can Be A Good Transformer Learner",
+              "url": "http://arxiv.org/abs/2404.05657v1",
+              "source": "arXiv"
+            },
+            {
+              "title": "transformer – YouTube educational search",
+              "url": "https://www.youtube.com/results?search_query=transformer%20explained",
+              "source": "YouTube"
+            }
+          ],
+          "source": "fallback"
+        },
+        {
+          "id": "a6c70f93-0f49-484f-8bd0-d74f158919a6",
+          "topic": "transformer",
+          "summary": "A structured overview of transformer with review questions for active recall.",
+          "timestamp": 1777653337992,
+          "type": "study_guide",
+          "reflection": "Score 100/100. The guide for transformer covered overview, concepts, subtopics, practice prompts, and linked study resources. It also had 28 memory entries available for personalization. Improve next time by linking at least one concept to a previously studied topic even more explicitly.",
+          "nextTopicSuggestion": "An intermediate concept that connects naturally after transformer",
+          "resourcesUsed": [
+            {
+              "title": "transformer on arXiv",
+              "url": "https://arxiv.org/search/?query=transformer&searchtype=all",
+              "source": "arXiv"
+            },
+            {
+              "title": "transformer – Google Scholar",
+              "url": "https://scholar.google.com/scholar?q=transformer",
+              "source": "Google Scholar"
+            },
+            {
+              "title": "transformer – YouTube educational search",
+              "url": "https://www.youtube.com/results?search_query=transformer%20explained",
+              "source": "YouTube"
+            }
+          ],
+          "source": "fallback"
+        },
+        {
+          "id": "d5988e09-f0e2-4334-aa28-508acbf87296",
+          "topic": "transformer",
+          "summary": "Transformers are neural network architectures central to modern Large Language Models, characterized by distinct input, hidden (featuring Multi-Head Attention), and output layers. They process sequential data, enabling applications like machine translation and text generation. While powerful, foundational Transformer models have limitations in areas like human-like conversation, math skills, and ethical alignment, which are continually being addressed through fine-tuning and ongoing research.",
+          "timestamp": 1777652854123,
+          "type": "study_guide",
+          "reflection": "Score 100/100. The guide for transformer covered overview, concepts, subtopics, practice prompts, and linked study resources. It also had 27 memory entries available for personalization. Improve next time by linking at least one concept to a previously studied topic even more explicitly.",
+          "nextTopicSuggestion": "Multi-Head Attention",
+          "resourcesUsed": [
+            {
+              "title": "transformer on arXiv",
+              "url": "https://arxiv.org/search/?query=transformer&searchtype=all",
+              "source": "arXiv"
+            },
+            {
+              "title": "transformer – Google Scholar",
+              "url": "https://scholar.google.com/scholar?q=transformer",
+              "source": "Google Scholar"
+            },
+            {
+              "title": "transformer – YouTube educational search",
+              "url": "https://www.youtube.com/results?search_query=transformer%20explained",
+              "source": "YouTube"
+            }
+          ],
+          "source": "gemini"
+        },
+        {
+          "id": "bb12174f-d50d-411e-a798-f81a4a56604b",
+          "topic": "transformer",
+          "summary": "A structured overview of transformer with review questions for active recall.",
+          "timestamp": 1777651444845,
+          "type": "study_guide",
+          "reflection": "Score 100/100. The guide for transformer covered overview, concepts, subtopics, practice prompts, and linked study resources. It also had 26 memory entries available for personalization. Improve next time by linking at least one concept to a previously studied topic even more explicitly.",
+          "nextTopicSuggestion": "An intermediate concept that connects naturally after transformer",
+          "resourcesUsed": [
+            {
+              "title": "transformer on arXiv",
+              "url": "https://arxiv.org/search/?query=transformer&searchtype=all",
+              "source": "arXiv"
+            },
+            {
+              "title": "transformer – Google Scholar",
+              "url": "https://scholar.google.com/scholar?q=transformer",
+              "source": "Google Scholar"
+            },
+            {
+              "title": "transformer – YouTube educational search",
+              "url": "https://www.youtube.com/results?search_query=transformer%20explained",
+              "source": "YouTube"
+            }
+          ],
+          "source": "fallback"
+        },
+        {
+          "id": "0af2ef03-7117-4c59-ba2a-2481c00e3125",
+          "topic": "transformers",
+          "summary": "A structured overview of transformers with review questions for active recall.",
+          "timestamp": 1777646470685,
+          "type": "study_guide",
+          "reflection": "Score 100/100. The guide for transformers covered overview, concepts, subtopics, practice prompts, and linked study resources. It also had 25 memory entries available for personalization. Improve next time by linking at least one concept to a previously studied topic even more explicitly.",
+          "nextTopicSuggestion": "An intermediate concept that connects naturally after transformers",
+          "resourcesUsed": [
+            {
+              "title": "Transformers",
+              "url": "https://en.wikipedia.org/wiki/Transformers",
+              "source": "Wikipedia"
+            },
+            {
+              "title": "Transformers (film series)",
+              "url": "https://en.wikipedia.org/wiki/Transformers%20(film%20series)",
+              "source": "Wikipedia"
+            },
+            {
+              "title": "Transformers: Revenge of the Fallen",
+              "url": "https://en.wikipedia.org/wiki/Transformers%3A%20Revenge%20of%20the%20Fallen",
+              "source": "Wikipedia"
+            },
+            {
+              "title": "Physics-Informed Machine Learning for Transformer Condition Monitoring -- Part I: Basic Concepts, Neural Networks, and Variants",
+              "url": "http://arxiv.org/abs/2512.22190v1",
+              "source": "arXiv"
+            },
+            {
+              "title": "Physics-Informed Machine Learning for Transformer Condition Monitoring -- Part II: Physics-Informed Neural Networks and Uncertainty Quantification",
+              "url": "http://arxiv.org/abs/2512.22189v1",
+              "source": "arXiv"
+            }
+          ],
+          "source": "fallback"
+        },
+        {
+          "id": "16fbd30d-4390-4a95-b0aa-8240210eeda0",
+          "topic": "transformer",
+          "summary": "Fallback response for transformer.",
+          "timestamp": 1777646073863,
+          "type": "teach",
+          "reflection": "Score 100/100. The tutor taught transformer using only uploaded materials. It also had 24 memory entries available for personalization. Improve next time by connecting it to another subtopic from the outline.",
+          "nextTopicSuggestion": "Another concept related to transformer",
+          "resourcesUsed": [],
+          "source": "fallback"
+        },
+        {
+          "id": "602a2a15-6375-496f-8f74-236468657f77",
+          "topic": "Feedforward layer",
+          "summary": "Fallback response for Feedforward layer.",
+          "timestamp": 1777645759880,
+          "type": "teach",
+          "reflection": "Score 100/100. The tutor taught Feedforward layer using only uploaded materials. It also had 23 memory entries available for personalization. Improve next time by connecting it to another subtopic from the outline.",
+          "nextTopicSuggestion": "Another concept related to Feedforward layer",
+          "resourcesUsed": [],
+          "source": "fallback"
+        },
+        {
+          "id": "3d0e3677-f18a-4867-888e-b4a6d353a211",
+          "topic": "encoder",
+          "summary": "The uploaded course materials do not contain information regarding 'encoders'.",
+          "timestamp": 1777645731415,
+          "type": "teach",
+          "reflection": "Score 100/100. The tutor taught encoder using only uploaded materials. It also had 22 memory entries available for personalization. Improve next time by connecting it to another subtopic from the outline.",
+          "nextTopicSuggestion": "Large Language Models",
+          "resourcesUsed": [],
+          "source": "gemini"
+        },
+        {
+          "id": "707f6317-5355-4d13-a972-b2d155520019",
+          "topic": "llms",
+          "summary": "Large Language Models (LLMs) are essential for text generation, encompassing open and closed-source variants. Their development involves techniques such as RL-based training and Chain-of-Thought reasoning for enhanced performance on complex tasks. Optimization methods like knowledge distillation and on-policy distillation are used to refine their outputs and learning efficiency. Furthermore, output-preserving techniques focus on optimizing inference without altering the model's quality.",
+          "timestamp": 1777645624985,
+          "type": "teach",
+          "reflection": "Score 100/100. The tutor taught llms using only uploaded materials. It also had 21 memory entries available for personalization. Improve next time by connecting it to another subtopic from the outline.",
+          "nextTopicSuggestion": "Distillation Techniques in LLMs",
+          "resourcesUsed": [],
+          "source": "gemini"
+        },
+        {
+          "id": "04df2d28-5722-4eb9-93a2-4e2f4ce17ff5",
+          "topic": "llm",
+          "summary": "Fallback response for llm.",
+          "timestamp": 1777645568391,
+          "type": "teach",
+          "reflection": "Score 100/100. The tutor taught llm using only uploaded materials. It also had 20 memory entries available for personalization. Improve next time by connecting it to another subtopic from the outline.",
+          "nextTopicSuggestion": "Another concept related to llm",
+          "resourcesUsed": [],
+          "source": "fallback"
+        },
+        {
+          "id": "39d0174d-cf31-4c52-bf41-5885e631e551",
+          "topic": "llm",
+          "summary": "Large Language Models (LLMs) are central to text generation, with an evolving landscape of open and closed-source variants. Models like DeepSeek-R1 demonstrate the use of RL-based training and Chain-of-Thought reasoning for complex tasks, highlighting the importance of training transparency. Distillation techniques, such as knowledge and on-policy distillation, are also employed to optimize and refine these models.",
+          "timestamp": 1777643001290,
+          "type": "teach",
+          "reflection": "Score 100/100. The tutor taught llm using only uploaded materials. It also had 19 memory entries available for personalization. Improve next time by connecting it to another subtopic from the outline.",
+          "nextTopicSuggestion": "Distillation Techniques for Models",
+          "resourcesUsed": [],
+          "source": "gemini"
+        },
+        {
+          "id": "fcd37378-f868-428f-af79-a07b8555cc13",
+          "topic": "transformertransformer",
+          "summary": "Fallback response for transformertransformer.",
+          "timestamp": 1777642622633,
+          "type": "teach",
+          "reflection": "Score 100/100. The tutor taught transformertransformer using only uploaded materials. It also had 18 memory entries available for personalization. Improve next time by connecting it to another subtopic from the outline.",
+          "nextTopicSuggestion": "Another concept related to transformertransformer",
+          "resourcesUsed": [],
+          "source": "fallback"
+        },
+        {
+          "id": "36b22571-561d-406c-b8b6-979241b87cfe",
+          "topic": "transformer",
+          "summary": "Fallback response for transformer.",
+          "timestamp": 1777642485288,
+          "type": "teach",
+          "reflection": "Score 100/100. The tutor taught transformer using only uploaded materials. It also had 17 memory entries available for personalization. Improve next time by connecting it to another subtopic from the outline.",
+          "nextTopicSuggestion": "Another concept related to transformer",
+          "resourcesUsed": [],
+          "source": "fallback"
+        },
+        {
+          "id": "242ff3bd-e185-4455-ac79-3168e0c0f57b",
+          "topic": "transformer",
+          "summary": "Fallback response for transformer.",
+          "timestamp": 1777641730796,
+          "type": "teach",
+          "reflection": "Score 100/100. The tutor taught transformer using only uploaded materials. It also had 16 memory entries available for personalization. Improve next time by connecting it to another subtopic from the outline.",
+          "nextTopicSuggestion": "Another concept related to transformer",
+          "resourcesUsed": [],
+          "source": "fallback"
+        },
+        {
+          "id": "9b08addd-2d71-41e0-8b10-c4f622ac2c07",
+          "topic": "transformer",
+          "summary": "Fallback response for transformer.",
+          "timestamp": 1777641357334,
+          "type": "teach",
+          "reflection": "Score 100/100. The tutor taught transformer using only uploaded materials. It also had 15 memory entries available for personalization. Improve next time by connecting it to another subtopic from the outline.",
+          "nextTopicSuggestion": "Another concept related to transformer",
+          "resourcesUsed": [],
+          "source": "fallback"
+        },
+        {
+          "id": "fb7ba478-438c-42e8-9b07-9ea4ed44f123",
+          "topic": "twbr",
+          "summary": "Fallback response for twbr.",
+          "timestamp": 1777641236887,
+          "type": "teach",
+          "reflection": "Score 100/100. The tutor taught twbr using only uploaded materials. It also had 14 memory entries available for personalization. Improve next time by connecting it to another subtopic from the outline.",
+          "nextTopicSuggestion": "Another concept related to twbr",
+          "resourcesUsed": [],
+          "source": "fallback"
+        },
+        {
+          "id": "38cfd438-ff86-4876-b1e2-c6d2cd9cc656",
+          "topic": "transformers",
+          "summary": "A structured overview of transformers with review questions for active recall.",
+          "timestamp": 1777640154632,
+          "type": "study_guide",
+          "reflection": "Score 100/100. The guide for transformers covered overview, concepts, subtopics, practice prompts, and linked study resources. It also had 13 memory entries available for personalization. Improve next time by linking at least one concept to a previously studied topic even more explicitly.",
+          "nextTopicSuggestion": "An intermediate concept that connects naturally after transformers",
+          "resourcesUsed": [
+            {
+              "title": "Transformers",
+              "url": "https://en.wikipedia.org/wiki/Transformers",
+              "source": "Wikipedia"
+            },
+            {
+              "title": "Transformers (film series)",
+              "url": "https://en.wikipedia.org/wiki/Transformers%20(film%20series)",
+              "source": "Wikipedia"
+            },
+            {
+              "title": "Transformers: Revenge of the Fallen",
+              "url": "https://en.wikipedia.org/wiki/Transformers%3A%20Revenge%20of%20the%20Fallen",
+              "source": "Wikipedia"
+            },
+            {
+              "title": "Physics-Informed Machine Learning for Transformer Condition Monitoring -- Part I: Basic Concepts, Neural Networks, and Variants",
+              "url": "http://arxiv.org/abs/2512.22190v1",
+              "source": "arXiv"
+            },
+            {
+              "title": "Physics-Informed Machine Learning for Transformer Condition Monitoring -- Part II: Physics-Informed Neural Networks and Uncertainty Quantification",
+              "url": "http://arxiv.org/abs/2512.22189v1",
+              "source": "arXiv"
+            }
+          ],
+          "source": "fallback"
+        },
+        {
+          "id": "f0bf32d2-ff8e-47aa-9222-feedf79372ea",
+          "topic": "fundamentals of ML",
+          "summary": "A structured overview of fundamentals of ML with review questions for active recall.",
+          "timestamp": 1777630168536,
+          "type": "study_guide",
+          "reflection": "Score 100/100. The guide for fundamentals of ML covered overview, concepts, subtopics, practice prompts, and linked study resources. It also had 12 memory entries available for personalization. Improve next time by linking at least one concept to a previously studied topic even more explicitly.",
+          "nextTopicSuggestion": "An intermediate concept that connects naturally after fundamentals of ML",
+          "resourcesUsed": [
+            {
+              "title": "The Fundamentals of Caring",
+              "url": "https://en.wikipedia.org/wiki/The%20Fundamentals%20of%20Caring",
+              "source": "Wikipedia"
+            },
+            {
+              "title": "Fundamentals of Engineering exam",
+              "url": "https://en.wikipedia.org/wiki/Fundamentals%20of%20Engineering%20exam",
+              "source": "Wikipedia"
+            },
+            {
+              "title": "Fundamentals of Physics",
+              "url": "https://en.wikipedia.org/wiki/Fundamentals%20of%20Physics",
+              "source": "Wikipedia"
+            },
+            {
+              "title": "Towards Smart Healthcare: Challenges and Opportunities in IoT and ML",
+              "url": "http://arxiv.org/abs/2312.05530v2",
+              "source": "arXiv"
+            },
+            {
+              "title": "Machine Learning for Everyone: Simplifying Healthcare Analytics with BigQuery ML",
+              "url": "http://arxiv.org/abs/2502.07026v2",
+              "source": "arXiv"
+            }
+          ],
+          "source": "fallback"
+        },
         {
           "id": "ecd3e4cd-f891-4ded-86db-29a5dd9a2e9f",
           "topic": "genai",

@@ -1,8 +1,10 @@
 import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
+import multer from "multer";
 import { runAgentLoop } from "./lib/agent.js";
 import { appendMemoryEntry, getSessionMemory } from "./lib/memoryStore.js";
+import { processAndStorePDF } from "./lib/rag.js";
 
 dotenv.config();
 
@@ -107,7 +109,26 @@ app.post("/api/initiative", async (req, res) => {
   } catch (error) {
     return res.status(500).json({
       error: error.message || "Could not generate initiative."
-    });
+});
+  }
+});
+
+const upload = multer({ storage: multer.memoryStorage() });
+
+app.post("/api/knowledge/upload", upload.single("file"), async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ error: "No file uploaded." });
+    }
+    
+    if (req.file.mimetype !== "application/pdf") {
+      return res.status(400).json({ error: "Only PDF files are supported." });
+    }
+
+    const result = await processAndStorePDF(req.file.buffer, req.file.originalname);
+    return res.json(result);
+  } catch (error) {
+    return res.status(500).json({ error: error.message || "Could not process PDF." });
   }
 });
 

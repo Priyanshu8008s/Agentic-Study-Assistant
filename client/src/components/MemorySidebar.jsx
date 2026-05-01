@@ -1,3 +1,6 @@
+import { useState } from "react";
+import DocumentUpload from "./DocumentUpload";
+
 function formatTime(timestamp) {
   return new Date(timestamp).toLocaleString([], {
     month: "short",
@@ -7,10 +10,12 @@ function formatTime(timestamp) {
   });
 }
 
-export default function MemorySidebar({ entries, nextTopic }) {
+export default function MemorySidebar({ entries, nextTopic, outline, onUploadComplete, loading }) {
   return (
-    <aside className="rounded-[2rem] border border-ink/10 bg-white/75 p-5 shadow-glow backdrop-blur">
-      <div className="space-y-5">
+    <aside className="space-y-6">
+      <DocumentUpload onUploadComplete={onUploadComplete} />
+      
+      <div className="rounded-[2rem] border border-ink/10 bg-white/75 p-5 shadow-glow backdrop-blur space-y-5">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-pine">Memory</p>
           <h2 className="mt-2 text-2xl font-semibold text-ink">Session history</h2>

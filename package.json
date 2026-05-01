@@ -11,11 +11,17 @@
   },
   "dependencies": {
     "@google/genai": "^1.21.0",
+    "@langchain/textsplitters": "^1.0.1",
+    "chromadb": "^3.4.3",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
+    "multer": "^2.1.1",
+    "pdf-parse": "^2.4.5",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "react-markdown": "^10.1.0",
+    "yt-search": "^2.13.1"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^5.1.0",

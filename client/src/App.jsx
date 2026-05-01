@@ -1,25 +1,20 @@
 import { useEffect, useState } from "react";
-import InitiativeBanner from "./components/InitiativeBanner";
 import MemorySidebar from "./components/MemorySidebar";
 import ResponsePanel from "./components/ResponsePanel";
 import TabButton from "./components/TabButton";
-import { fetchInitiative, fetchMemory, runAgent } from "./lib/api";
+import { fetchMemory, runAgent } from "./lib/api";
+import CourseOutline from "./components/CourseOutline";
 
 const tabs = [
   {
     id: "study_guide",
     label: "Study Guide",
-    placeholder: "Enter a topic like Photosynthesis, Neural Networks, or World War I"
+    placeholder: "Ask a question or request a topic explanation based on the uploaded PDF..."
   },
   {
     id: "clarify",
     label: "Concepts",
-    placeholder: "Explain entropy, recursion, inflation, or any concept you want simplified"
-  },
-  {
-    id: "podcast",
-    label: "Podcast",
-    placeholder: "Turn a topic into a two-host conversational script"
+    placeholder: ""
   }
 ];
 
@@ -40,25 +35,19 @@ export default function App() {
   const [activeTab, setActiveTab] = useState("study_guide");
   const [inputs, setInputs] = useState({
     study_guide: "",
-    clarify: "",
-    podcast: ""
+    clarify: ""
   });
   const [sessionId] = useState(getSessionId);
   const [response, setResponse] = useState(null);
   const [memory, setMemory] = useState([]);
-  const [initiative, setInitiative] = useState(null);
+  const [outline, setOutline] = useState(null);
   const [loading, setLoading] = useState(false);
   const [booting, setBooting] = useState(true);
   const [error, setError] = useState("");
 
   async function loadSideData() {
-    const [memoryPayload, initiativePayload] = await Promise.all([
-      fetchMemory(sessionId),
-      fetchInitiative(sessionId)
-    ]);
-
+    const memoryPayload = await fetchMemory(sessionId);
     setMemory(memoryPayload.entries);
-    setInitiative(initiativePayload);
   }
 
   useEffect(() => {
@@ -66,17 +55,13 @@ export default function App() {
 
     async function bootstrap() {
       try {
-        const [memoryPayload, initiativePayload] = await Promise.all([
-          fetchMemory(sessionId),
-          fetchInitiative(sessionId)
-        ]);
+        const memoryPayload = await fetchMemory(sessionId);
 
         if (cancelled) {
           return;
         }
 
         setMemory(memoryPayload.entries);
-        setInitiative(initiativePayload);
       } catch (loadError) {
         if (!cancelled) {
           setError(loadError.message);
@@ -125,6 +110,7 @@ export default function App() {
     }
   }
 
+
   function updateInput(value) {
     setInputs((current) => ({
       ...current,
@@ -132,15 +118,9 @@ export default function App() {
     }));
   }
 
-  function reuseTopic(topic) {
-    setInputs((current) => ({
-      ...current,
-      [activeTab]: topic
-    }));
-  }
 
   const activeConfig = tabs.find((tab) => tab.id === activeTab);
-  const nextTopic = response?.nextTopic || initiative?.nextTopic;
+  const nextTopic = response?.nextTopic;
 
   return (
     <div className="hero-grid min-h-screen px-4 py-6 text-ink sm:px-6 lg:px-10">
@@ -155,10 +135,6 @@ export default function App() {
                 <h1 className="text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
                   A study app that observes, thinks, decides, acts, reflects, and improves.
                 </h1>
-                <p className="max-w-xl text-sm leading-7 text-ink/72 sm:text-base">
-                  Phase 1 simulates a lightweight AI mind with memory-aware tutoring, autonomous
-                  study prompts, and a continuous reflection loop after every response.
-                </p>
               </div>
 
               <div className="rounded-[2rem] bg-ink px-5 py-4 text-white">
@@ -167,8 +143,6 @@ export default function App() {
               </div>
             </div>
           </section>
-
-          <InitiativeBanner initiative={initiative} onReuseTopic={reuseTopic} />
 
           <section className="rounded-[2rem] border border-ink/10 bg-white/75 p-6 shadow-glow backdrop-blur">
             <div className="flex flex-wrap gap-3">
@@ -182,42 +156,66 @@ export default function App() {
               ))}
             </div>
 
-            <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
-              <label className="block">
-                <span className="mb-2 block text-sm font-semibold text-ink/75">
-                  {activeTab === "clarify" ? "What concept should we simplify?" : "What should we study?"}
-                </span>
-                <textarea
-                  value={inputs[activeTab]}
-                  onChange={(event) => updateInput(event.target.value)}
-                  placeholder={activeConfig.placeholder}
-                  rows={4}
-                  className="w-full rounded-[1.75rem] border border-ink/10 bg-white px-5 py-4 text-sm text-ink outline-none ring-0 transition placeholder:text-ink/35 focus:border-pine"
-                />
-              </label>
-
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-                <button
-                  type="submit"
-                  disabled={loading || booting}
-                  className="rounded-full bg-ink px-5 py-3 text-sm font-semibold text-white transition hover:bg-ink/92 disabled:cursor-not-allowed disabled:bg-ink/40"
-                >
-                  {loading ? "Running agent loop..." : "Run agent loop"}
-                </button>
-
-                <p className="text-sm text-ink/60">
-                  Active mode: <span className="font-semibold text-pine">{activeConfig.label}</span>
-                </p>
+            {activeTab === "clarify" ? (
+              <div className="mt-6">
+                {outline ? (
+                  <CourseOutline 
+                    outline={outline} 
+                    onTopicSelect={(topic) => {
+                      updateInput(topic);
+                      setActiveTab("study_guide");
+                    }} 
+                  />
+                ) : (
+                  <p className="text-sm text-ink/60 p-4 border border-dashed border-ink/20 rounded-2xl">
+                    Upload a PDF document first to view the extracted course outline here.
+                  </p>
+                )}
               </div>
+            ) : (
+              <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
+                <label className="block">
+                  <span className="mb-2 block text-sm font-semibold text-ink/75">
+                    Ask about your document
+                  </span>
+                  <textarea
+                    value={inputs[activeTab]}
+                    onChange={(event) => updateInput(event.target.value)}
+                    placeholder={activeConfig.placeholder}
+                    rows={4}
+                    className="w-full rounded-[1.75rem] border border-ink/10 bg-white px-5 py-4 text-sm text-ink outline-none ring-0 transition placeholder:text-ink/35 focus:border-pine"
+                  />
+                </label>
 
-              {error ? <p className="text-sm font-medium text-ember">{error}</p> : null}
-            </form>
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                  <button
+                    type="submit"
+                    disabled={loading || booting}
+                    className="rounded-full bg-ink px-5 py-3 text-sm font-semibold text-white transition hover:bg-ink/92 disabled:cursor-not-allowed disabled:bg-ink/40"
+                  >
+                    {loading ? "Asking Tutor..." : "Ask Tutor"}
+                  </button>
+
+                  <p className="text-sm text-ink/60">
+                    Active mode: <span className="font-semibold text-pine">{activeConfig.label}</span>
+                  </p>
+                </div>
+
+                {error ? <p className="text-sm font-medium text-ember">{error}</p> : null}
+              </form>
+            )}
           </section>
 
           <ResponsePanel response={response} />
         </main>
 
-        <MemorySidebar entries={memory} nextTopic={nextTopic} />
+        <MemorySidebar 
+          entries={memory} 
+          nextTopic={nextTopic} 
+          outline={outline}
+          onUploadComplete={setOutline}
+          loading={loading}
+        />
       </div>
     </div>
   );
