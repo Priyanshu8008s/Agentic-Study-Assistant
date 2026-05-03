@@ -1,130 +1,196 @@
 # Agentic Study Assistant
 
-Phase 1 prototype of a full-stack study app that simulates an AI "mind" with an agent loop:
+A full-stack, AI-powered academic tutor that transforms uploaded course materials into rich, multimedia study guides. Built on a RAG (Retrieval-Augmented Generation) pipeline, the agent grounds every response in the student's own uploaded PDF before synthesising explanations using the Gemini API.
 
-`observe -> think -> decide -> act -> reflect -> repeat`
+The system follows a cognitive agent loop:
+
+```
+observe → think → decide → act → reflect → repeat
+```
+
+---
+
+## Features
+
+### 📄 PDF Upload & RAG Pipeline
+- Upload any course PDF and the system parses, chunks, and embeds the text into a local [ChromaDB](https://www.trychroma.com/) vector database.
+- All subsequent study guide responses are grounded in your specific document, not generic internet knowledge.
+- Automatically generates a structured **Course Outline** (topics & subtopics) from the uploaded document.
+
+### 🎓 Masterclass Study Guide (Study Guide Tab)
+- Produces a pedagogically structured, Markdown-formatted lesson rendered with full syntax support (headings, bold, bullets).
+- **Analogy-first approach** — starts with a relatable everyday analogy, then maps it to the real academic concept from the RAG context.
+- Includes **Engaging Activities** — hands-on tasks and thought experiments to extend understanding.
+- Curated **📚 Deep Dive Reading** — 2–3 arXiv/academic articles filtered for quality (Wikipedia and content farms excluded).
+- Curated **🎥 Watch & Learn** — relevant educational YouTube videos with a per-video annotation on what concept it clarifies.
+
+### 🔬 Concepts Tab (Technical Breakdown)
+- Completely technical output — no analogies, no simplification.
+- Returns three precision-focused sections:
+  - **Technical Definition** — exact, jargon-heavy academic definition
+  - **Core Components** — underlying mechanisms and architecture
+  - **Advanced Implications** — use in high-level or complex contexts
+
+### 🧠 Session Memory
+- Every interaction is saved per-session to `server/data/memory.json`.
+- The agent injects recent session history into each new prompt for personalised, continuity-aware responses.
+- A persistent **Memory Sidebar** shows past topics, timestamps, quality scores, and next-topic suggestions.
+
+### 🔁 Model Cascade (Resilience)
+- Automatically cascades through models on quota or service errors:
+  `gemini-2.5-pro → gemini-2.5-flash → gemini-2.0-flash-001`
+- Falls back to a local prototype generator (using the raw RAG chunks) if all API calls fail, so the app never crashes for the user.
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Frontend | React 19, Vite, Tailwind CSS |
+| Backend | Node.js, Express 5 |
+| AI | Google Gemini API (`@google/genai`) |
+| Vector DB | ChromaDB (Docker) |
+| Embeddings | `gemini-embedding-2` |
+| PDF Parsing | `pdf-parse` |
+| Text Splitting | `@langchain/textsplitters` |
+| Web Research | arXiv API + YouTube RSS |
+| Markdown Rendering | `react-markdown` |
+
+---
 
 ## Setup
 
-1. Install dependencies:
+### Prerequisites
+- Node.js ≥ 18
+- Docker (for ChromaDB)
+- A [Gemini API key](https://aistudio.google.com/)
 
-   ```bash
-   npm install
-   ```
+### 1. Start ChromaDB
 
-2. Create an environment file:
+```bash
+docker run -p 8000:8000 chromadb/chroma
+```
 
-   ```bash
-   cp .env.example .env
-   ```
+### 2. Install dependencies
 
-3. Add your Gemini API key to `.env`:
+```bash
+npm install
+```
 
-   ```env
-   GEMINI_API_KEY=your_api_key_here
-   GEMINI_MODEL=gemini-2.5-pro
-   PORT=3001
-   ```
+### 3. Create environment file
 
-4. Start the app:
+```bash
+cp .env.example .env
+```
 
-   ```bash
-   npm start
-   ```
+Edit `.env`:
 
-5. Open `http://localhost:5173`
+```env
+GEMINI_API_KEY=your_api_key_here
+GEMINI_MODEL=gemini-2.5-pro
+PORT=3001
+```
+
+### 4. Start the app
+
+```bash
+npm start
+```
+
+Opens the Vite dev server at `http://localhost:5173` and the Express API at `http://localhost:3001`.
+
+---
 
 ## Environment Variables
 
-- `GEMINI_API_KEY`: Gemini API key from Google AI Studio.
-- `GEMINI_MODEL`: Optional override for the model name. Defaults to `gemini-2.5-pro`.
-- `PORT`: Express API port. Defaults to `3001`.
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `GEMINI_API_KEY` | — | Your Gemini API key from Google AI Studio |
+| `GEMINI_MODEL` | `gemini-2.5-pro` | Primary Gemini model to use |
+| `PORT` | `3001` | Express API port |
 
-## API
+---
+
+## API Reference
 
 ### `POST /api/agent`
 
-Request body:
+Runs the agent loop and returns a study response.
 
 ```json
 {
   "action": "study_guide",
-  "topic": "Photosynthesis",
-  "sessionId": "local-browser-session-id"
+  "topic": "Transformer Architecture",
+  "sessionId": "your-session-uuid"
 }
 ```
 
-Behavior:
+**Actions:** `study_guide` | `clarify`
 
-- loads session memory
-- builds a memory-injected Gemini prompt
-- decides the final mode
-- generates content
-- reflects on quality
-- stores the result in memory
-- returns the response plus next-topic suggestion
+**Response includes:**
+- `content` — the structured lesson, definitions, or breakdown
+- `reflection` — quality score and self-improvement note
+- `reflectionScore` — numeric 0–100
+- `nextTopic` — suggested follow-up concept
+- `meta` — agent loop trace (`observe`, `think`, `decide`, `act`, `research`, `reflect`)
+
+### `POST /api/upload-pdf`
+
+Accepts a `multipart/form-data` request with a `pdf` file. Parses, chunks, embeds, and stores the document. Also returns the auto-generated course outline.
 
 ### `GET /api/memory/:sessionId`
 
-Returns saved entries for a session, including topics, summaries, timestamps, and reflections.
+Returns all saved session entries including topics, summaries, timestamps, and reflections.
 
 ### `POST /api/initiative`
 
-Triggered on page load to generate proactive study guidance and recap prompts from memory.
+Called on page load. Returns a proactive study nudge based on memory — e.g. recap suggestions for topics not reviewed in 2+ days.
 
-## How The Agent Loop Works
+---
 
-1. `Observe`: the API receives a topic, selected tab, and session id.
-2. `Think`: the backend injects recent memory into the Gemini prompt.
-3. `Decide`: the server normalizes or infers the most suitable mode.
-4. `Act`: the system returns a study guide, concept clarification, or podcast script.
-5. `Reflect`: the response gets a quality score and improvement note.
-6. `Repeat`: the loop proposes what to study next and stores that in memory for future runs.
+## How the Agent Loop Works
 
-## Frontend Features
+| Step | What Happens |
+|------|-------------|
+| **Observe** | API receives topic, action, and session ID |
+| **Think** | Recent memory entries are injected into the Gemini prompt |
+| **Decide** | Server infers the correct mode (`study_guide`, `clarify`, etc.) |
+| **Act** | Generates content grounded in RAG context + web/video resources |
+| **Reflect** | Scores the output and stores an improvement note |
+| **Repeat** | Proposes the next study step and saves to memory |
 
-- Study Guide tab with collapsible sections for overview, concepts, subtopics, and practice questions
-- Study Guide mode now runs a lightweight research agent that fetches study links before building the guide
-- Concepts tab with three-card outputs: simple explanation, analogy, and memory hook
-- Podcast tab with a two-host script and browser `SpeechSynthesis` playback
-- Persistent memory sidebar with past sessions, timestamps, and next-topic suggestion
-- Autonomous initiative banner that appears on load and nudges recap behavior
+---
 
-## Memory Storage
+## Project Structure
 
-Memory is stored in `server/data/memory.json` using a single-user JSON structure:
-
-```json
-{
-  "sessions": {
-    "session-id": {
-      "sessionId": "session-id",
-      "entries": [
-        {
-          "id": "uuid",
-          "topic": "Photosynthesis",
-          "summary": "A structured overview...",
-          "timestamp": 1712240000000,
-          "type": "study_guide",
-          "reflection": "Score 100/100...",
-          "nextTopicSuggestion": "Cellular respiration"
-        }
-      ]
-    }
-  }
-}
+```
+.
+├── client/
+│   └── src/
+│       ├── components/
+│       │   ├── CourseOutline.jsx    # PDF-derived topic navigator
+│       │   ├── DocumentUpload.jsx   # PDF upload UI
+│       │   ├── MemorySidebar.jsx    # Session history panel
+│       │   ├── ResponsePanel.jsx    # Renders all study outputs
+│       │   └── TutorInput.jsx      # Topic input field
+│       └── App.jsx                 # Main layout + routing logic
+├── server/
+│   ├── lib/
+│   │   ├── agent.js                # Agent loop, prompts, sanitizers
+│   │   ├── rag.js                  # ChromaDB + embedding pipeline
+│   │   ├── webResearch.js          # arXiv + YouTube fetchers
+│   │   └── memoryStore.js          # Session memory read/write
+│   ├── data/
+│   │   └── memory.json             # Persistent session storage
+│   └── index.js                    # Express server + routes
+└── README.md
 ```
 
-## How This System Behaves Like A Mind
-
-- It observes a learner prompt and current session context before responding.
-- It thinks with memory, using past topics and reflections as working context.
-- It decides between different behaviors instead of always replying the same way.
-- It reflects on every output, scores itself, and stores an improvement note.
-- It shows initiative by suggesting the next study step without waiting for a new prompt.
+---
 
 ## Notes
 
-- If `GEMINI_API_KEY` is missing or Gemini is temporarily unavailable, the prototype falls back to a local response generator so the app still runs for demos.
-- Live study-resource fetching uses public web endpoints from Wikipedia and arXiv, with safe fallback links if the network is unavailable.
-- Gemini integration follows the official Google GenAI SDK for JavaScript: [Gemini API libraries](https://ai.google.dev/gemini-api/docs/libraries) and [Gemini API quickstart](https://ai.google.dev/gemini-api/docs/quickstart).
+- The embedding quota for `gemini-embedding-2` is 1,000 requests/day on the free tier. If exceeded, embeddings fall back to zero vectors (RAG retrieval will not match, but the app won't crash).
+- The ChromaDB collection is named `academic_materials_v2`. If you change embedding models, drop the old collection or rename it to avoid dimension-mismatch errors.
+- Web research uses the arXiv public API (no key needed) and YouTube RSS search feeds. If these are unavailable, the agent falls back to curated search links.
